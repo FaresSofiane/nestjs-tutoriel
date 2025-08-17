@@ -1,0 +1,24 @@
+### Auth
+
+# Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "sofiane",
+  "password": "UnMotDePasse"
+}
+
+GET http://localhost:3000/auth/profile
+Authorization: Bearer {{token}}
+
+### Message Module
+
+GET http://localhost:3000/message/
+
+POST http://localhost:3000/message
+Content-Type: application/json
+
+{
+  "content": "{{randomString}}"
+}
