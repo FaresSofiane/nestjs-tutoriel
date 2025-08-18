@@ -8,15 +8,40 @@ import { InjectRepository } from '@nestjs/typeorm';
 @Injectable()
 export class UsersService {
 
-    constructor(@InjectRepository(Users) private messages: Repository<Users>) {}
-    
+    constructor(@InjectRepository(Users) private users: Repository<Users>) {}
 
-    async findoneById(id: number): Promise<User | undefined>{
-        return this.users.find(user => user.userId === id);
+    async create(username: string, password: string){
+        const user = this.users.create({username, password})
+        return await this.users.save(user)
     }
 
-    async findone(username: string): Promise<User | undefined>{
-        return this.users.find(user => user.username === username);
+    async findoneById(id: string): Promise<User | undefined | any>{
+
+        return await this.users.find({
+            select : {
+                id: true,
+                username: true,
+                password: true,
+                createdAt: true
+            },
+            where : [
+                {id: id}
+            ]
+        })
+    }
+
+    async findone(username: string): Promise<User | undefined | any>{
+        return await this.users.find({
+            select : {
+                id: true,
+                username: true,
+                password: true,
+                createdAt: true
+            },
+            where : [
+                {username: username}
+            ]
+        })
     }
 
 
