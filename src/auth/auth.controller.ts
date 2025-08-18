@@ -10,7 +10,6 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @Post('login')
     async signin(@Body() signInDto: Record<string, any>){
-        console.log("Hello Login")
         return this.authService.signin(signInDto.username, signInDto.password)
 
     }
@@ -18,7 +17,6 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @Post('signup')
     async signup(@Body() signupDto: Record<string, any>){
-        console.log("Hello Register")
         return this.authService.signup(signupDto.username, signupDto.password, signupDto.password_conf)
     }
 

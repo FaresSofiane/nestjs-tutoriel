@@ -9,6 +9,7 @@ import { Messages } from './message/message.entity';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { Users } from './users/user.entity';
+import { MediaModule } from './media/media.module';
 
 @Module({
   imports: [
@@ -25,7 +26,7 @@ import { Users } from './users/user.entity';
     entities: [Messages, Users],
     synchronize: true,
   }),
-  CatsModule, MessageModule, AuthModule, UsersModule],
+  CatsModule, MessageModule, AuthModule, UsersModule, MediaModule],
   controllers: [AppController],
   providers: [AppService],
 })
